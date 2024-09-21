@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setTimeout</title>
+</head>
+<body>
+    <h1 id="text">Kishan Ginoya</h1>
+    <button type="submit" id="stop">stop</button>
+</body>
+<script>
+
+    const sayHii=function(){
+        console.log("hii")
+    }
+
+    setTimeout(sayHii,3000)
+
+    //text change in h1 tag after some time
+    const text=document.querySelector('#text')
+    const changeText=function(){
+        text.innerHTML="Kishan King"
+    }
+
+    const change=setTimeout(changeText,3000)
+
+    //there are also available of clear timeout for stop timeout
+    //we invoke it whenever stop button clicked
+
+    document.querySelector('#stop').addEventListener('click',function(){
+        clearTimeout(change)
+        console.log("Stopped")
+
+    })
+</script>
+</html>
