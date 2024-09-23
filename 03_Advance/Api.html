@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>How to fetch APi</h1>
+</body>
+
+<script>
+    const requestUrl = "https://api.github.com/users/hiteshchoudhary";
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', requestUrl)
+    xhr.onreadystatechange = function () {
+        console.log(xhr.readyState);//for check which state run or which state not run
+        if (xhr.readyState === 4) {
+            const data = JSON.parse(this.responseText)//by default data return in string we have to convert into object 
+            console.log(data)
+            console.log(data.followers);
+            const button = document.createElement('button');
+            button.textContent='submit'
+            button.addEventListener('click',function(){
+                const img = document.createElement('img');
+            img.src = data.avatar_url;
+            console.log(img.src)
+            document.body.appendChild(img)
+            document.body.removeChild(button)
+            })
+            document.body.appendChild(button)
+        }
+    }
+    xhr.send();
+
+
+</script>
+
+</html>
